@@ -1,6 +1,6 @@
+package refactorizado;
 import java.time.LocalDateTime;
 
-// 1. Introduce Parameter Object: Encapsulamos datos relacionados
 record Paciente(String nombre, String email) {}
 record Profesional(String nombre, String especialidad) {}
 
@@ -28,7 +28,6 @@ class Turno {
     public TipoServicio getTipoServicio() { return tipoServicio; }
 }
 
-// 2. Separación de Responsabilidades (SRP) e Inversión de Dependencias (DIP)
 interface TurnoValidator { boolean esValido(Turno turno); }
 interface TurnoRepository { void guardar(Turno turno); }
 interface NotificadorService { void enviarConfirmacion(Turno turno); }
@@ -45,7 +44,6 @@ public class TurnoManagerRefactorizado {
     }
 
     public boolean procesarTurno(Turno turno) {
-        // 3. Guard Clause: Validación temprana sin anidamiento (elimina el Anti-patrón Arrow)
         if (!validator.esValido(turno)) {
             return false;
         }
