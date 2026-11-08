@@ -25,6 +25,7 @@ class Turno {
     }
     public Paciente getPaciente() { return paciente; }
     public Profesional getProfesional() { return profesional; }
+    public LocalDateTime getFechaHora() { return fechaHora; } // Getter agregado
     public TipoServicio getTipoServicio() { return tipoServicio; }
 }
 
